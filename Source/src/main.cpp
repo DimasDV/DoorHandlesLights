@@ -14,22 +14,22 @@
 #define LED_PWM_2       OCR0B						// Второй канал PORTB.1
 
 #define ALL_LED_ON		(PORTB |= _BV(PB0));\
-						(PORTB |= _BV(PB1));
+				(PORTB |= _BV(PB1));
 #define ALL_LED_OFF		(PORTB &= ~_BV(PB0));\
-						(PORTB &= ~_BV(PB1));
+				(PORTB &= ~_BV(PB1));
 
 #define ALL_LED_XOR		(PORTB ^= _BV(PB0));\
-						(PORTB ^= _BV(PB1));
+				(PORTB ^= _BV(PB1));
 
-#define LED_XOR(x)      (PORTB ^=  _BV(x))			// Переключение состояния первого или второго канала (нужно для режима программирования параметров)
+#define LED_XOR(x)      	(PORTB ^=  _BV(x))			// Переключение состояния первого или второго канала (нужно для режима программирования параметров)
 #define LED_ON(x)		(PORTB |= _BV(x))
 #define LED_OFF(x)		(PORTB &= ~_BV(x))
 
-#define BLOK_RELE_OFF	(PORTB &= ~_BV(PB2))		// Включение выхода на блокировку внешнего питания 
-#define BLOK_RELE_ON	(PORTB |=  _BV(PB2))		// Отключение выхода на блокировку внешнего питания
+#define BLOK_RELE_OFF		(PORTB &= ~_BV(PB2))		// Включение выхода на блокировку внешнего питания 
+#define BLOK_RELE_ON		(PORTB |=  _BV(PB2))		// Отключение выхода на блокировку внешнего питания
 #define RELE			!(PINB & _BV(PB3))
-#define KEY1            !(PINB & _BV(PB4))			// Кнопка для входа в режим программирования параметров ПЕРВОГО канала
-#define KEY2            !(PINB & _BV(PB5))			// Кнопка для входа в режим программирования параметров ВТОРОГО канала
+#define KEY1            	!(PINB & _BV(PB4))			// Кнопка для входа в режим программирования параметров ПЕРВОГО канала
+#define KEY2            	!(PINB & _BV(PB5))			// Кнопка для входа в режим программирования параметров ВТОРОГО канала
 #define KEY(x)			!(PINB & _BV(1 << x))
 
 #define stupen_disable		0
