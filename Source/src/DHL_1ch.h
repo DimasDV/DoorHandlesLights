@@ -1,11 +1,10 @@
 #ifdef CHANEL_1
-
-    EEMEM uint16_t eeTime[4] = {0*FreqMulti, 10*FreqMulti, 5*FreqMulti, 15*FreqMulti};
+	EEMEM uint16_t eeTime[4] = {0*FreqMulti, 10*FreqMulti, 5*FreqMulti, 15*FreqMulti};
 	EEMEM uint8_t eeBrightness;
-    uint8_t 	ledout;
-    uint8_t 	stupen_PWM;			// Номер ступени [номер канала]
-    uint8_t 	speed_PWM;			// Скорость изменения ШИМ [номер канала]
-    uint16_t 	delay_PWM;			// Время работы ступени [номер канала]
+	uint8_t	 ledout;
+	uint8_t	 stupen_PWM;		// Номер ступени [номер канала]
+    uint8_t	 speed_PWM;			// Скорость изменения ШИМ [номер канала]
+    uint16_t delay_PWM;			// Время работы ступени [номер канала]
 
 	void setPWM() {
 		// Timer/Counter 0 initialization
@@ -144,18 +143,10 @@
 			}
 
 			switch (stupen_PWM) {
-				case 0:		if (ch == stupen_enable) LED_PWM_1 = LED_PWM_2 = 0x00; 
-							break;
-				
-				case 1:		if (ch == speed_PWM_enable) {if (ledout != brightness) {LED_PWM_1 = LED_PWM_2 = (ledout*ledout) >> 8; ledout++;}}
-							break;
-				
-				case 2:		if (ch == stupen_enable) LED_PWM_1 =  LED_PWM_2 = brightness;
-							break;
-
-				case 3:		if (ch == speed_PWM_enable) {if (ledout != 0x00) {LED_PWM_1 =  LED_PWM_2 = (ledout*ledout) >> 8; ledout--;}}
-							break;
-				
+				case 0:		if (ch == stupen_enable) LED_PWM_1 = LED_PWM_2 = 0x00; break;	
+				case 1:		if (ch == speed_PWM_enable) {if (ledout != brightness) {LED_PWM_1 = LED_PWM_2 = (ledout*ledout) >> 8; ledout++;}}break;
+				case 2:		if (ch == stupen_enable) LED_PWM_1 =  LED_PWM_2 = brightness; break;
+				case 3:		if (ch == speed_PWM_enable) {if (ledout != 0x00) {LED_PWM_1 =  LED_PWM_2 = (ledout*ledout) >> 8; ledout--;}} break;
 				default:	BLOK_RELE_OFF;
 			}
 
